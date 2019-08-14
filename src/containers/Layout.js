@@ -19,9 +19,18 @@ class CustomLayout extends React.Component {
             style={{ lineHeight: "64px" }}
           >
             {this.props.isAuthenticated ? (
-              <Menu.Item key="2" onClick={this.props.logout}>
-                Logout
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={["2"]}
+                style={{ lineHeight: "64px" }}>
+                <Menu.Item key="2" onClick={this.props.logout}>
+                  Logout
               </Menu.Item>
+                <Menu.Item key="3">
+                  <Link to="/prescriptions">Prescriptions</Link>
+                </Menu.Item>
+              </Menu>
             ) : (
                 <Menu
                   theme="dark"
@@ -60,7 +69,7 @@ class CustomLayout extends React.Component {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2016 Created by Ant UED
+         Ant UED
         </Footer>
       </Layout>
     );

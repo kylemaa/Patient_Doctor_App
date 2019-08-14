@@ -94,6 +94,7 @@ class RegistrationForm extends React.Component {
   }
 
   render() {
+
     let errorMessage = null;
     if (this.props.error) {
       errorMessage = (
@@ -108,29 +109,13 @@ class RegistrationForm extends React.Component {
         sm: { span: 8 },
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
+        xs: { span: 48 },
+        sm: { span: 12 },
       },
     };
 
     return (
-      <Grid
-        textAlign="center"
-        style={{ height: "100vh" }}
-        verticalAlign="middle"
-      >
+      <div>
         {errorMessage}
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
 
@@ -209,7 +194,7 @@ class RegistrationForm extends React.Component {
           </FormItem>
 
         </Form>
-      </Grid>
+      </div>
     );
   }
 }

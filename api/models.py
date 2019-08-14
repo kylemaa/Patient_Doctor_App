@@ -7,7 +7,7 @@ class Prescription(models.Model):
     title = models.CharField(max_length=50)
     doctor = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(title):
+    def __str__(self):
         return self.title
 
 

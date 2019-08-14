@@ -23,6 +23,7 @@ const authSuccess = (state, action) => {
     is_patient: action.user.is_patient,
     is_doctor: action.user.is_doctor,
     userId: action.user.userId,
+    username: action.user.username,
     error: null,
     loading: false
   });

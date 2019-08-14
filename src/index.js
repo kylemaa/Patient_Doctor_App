@@ -5,13 +5,14 @@ import registerServiceWorker from "./registerServiceWorker";
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-
+import prescriptionReducer from "./store/reducers/prescriptions";
 import authReducer from "./store/reducers/auth";
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  prescriptions: prescriptionReducer
 });
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));

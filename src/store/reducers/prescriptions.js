@@ -3,6 +3,7 @@ import { updateObject } from "../utility";
 
 const initialState = {
     prescriptions: [],
+    currentPrescription: {},
     error: null,
     loading: false
 };
@@ -29,6 +30,27 @@ const getPrescriptionListFail = (state, action) => {
     });
 };
 
+const getPrescriptionDetailStart = (state, action) => {
+    return updateObject(state, {
+        error: null,
+        loading: true
+    });
+};
+
+const getPrescriptionDetailSuccess = (state, action) => {
+    return updateObject(state, {
+        currentPrescription: action.prescription,
+        error: null,
+        loading: false
+    });
+};
+
+const getPrescriptionDetailFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error,
+        loading: false
+    });
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -38,6 +60,13 @@ const reducer = (state = initialState, action) => {
             return getPrescriptionListSuccess(state, action);
         case actionTypes.GET_PRESCRIPTION_LIST_FAIL:
             return getPrescriptionListFail(state, action);
+
+        case actionTypes.GET_PRESCRIPTION_DETAIL_START:
+            return getPrescriptionDetailStart(state, action);
+        case actionTypes.GET_PRESCRIPTION_DETAIL_SUCCESS:
+            return getPrescriptionDetailSuccess(state, action);
+        case actionTypes.GET_PRESCRIPTION_DETAIL_FAIL:
+            return getPrescriptionDetailFail(state, action);
         default:
             return state;
     }

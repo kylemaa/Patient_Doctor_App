@@ -12,17 +12,7 @@ class Prescription(models.Model):
     direction = models.CharField(max_length=100, null=True)
     release_date = models.DateField(
         db_index=True, auto_now_add=True, null=True)
-    doctor = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
-
-
-class SignedPrescription(models.Model):
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
-    prescription = models.ForeignKey(
-        Prescription, on_delete=models.SET_NULL, blank=True, null=True)
-    is_signed = models.BooleanField()
 
     def __str__(self):
         return self.patient.username

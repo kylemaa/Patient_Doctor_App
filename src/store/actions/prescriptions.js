@@ -79,3 +79,47 @@ export const getPrescriptionsDetail = (token, id) => {
             });
     };
 };
+
+const postPrescriptionDetailStart = () => {
+    return {
+        type: actionTypes.POST_PRESCRIPTION_DETAIL_START
+    };
+};
+
+const postPrescriptionDetailSuccess = (p) => {
+    return {
+        type: actionTypes.POST_PRESCRIPTION_DETAIL_SUCCESS,
+        p
+    };
+}
+
+
+const postPrescriptionDetailFail = error => {
+    return {
+        type: actionTypes.POST_PRESCRIPTION_DETAIL_FAIL,
+        error: error
+    };
+};
+export const postPrescriptionDetail = (Title, Medicine, Quantity, Direction, Recipient) => {
+    return dispatch => {
+        dispatch(postPrescriptionDetailStart());
+        const p = {
+            Title, Medicine, Quantity, Direction, Recipient
+        }
+        axios.defaults.headers = {
+            "Content-Type": "application/json",
+            // Authorization: `Token ${token}`
+        };
+        axios.post('http://127.0.0.1:8000/prescriptions/', p).then(res => {
+            const p = {
+                Title, Medicine, Quantity, Direction, Recipient
+            }
+
+            dispatch(postPrescriptionDetailSuccess(p));
+        })
+            .catch(err => {
+                dispatch(postPrescriptionDetailFail());
+            });
+
+    }
+}

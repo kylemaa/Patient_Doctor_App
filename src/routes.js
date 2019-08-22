@@ -6,6 +6,7 @@ import Signup from "./containers/Signup";
 import Profile from "./containers/Profile";
 import PresciptionsList from "./containers/PrescriptionsList";
 import PresciptionsDetail from "./containers/PrescriptionsDetail";
+import WritePresciptionForm from "./containers/WritePrescription"
 import HomepageLayout from "./containers/Home";
 
 const BaseRouter = () => (
@@ -16,6 +17,7 @@ const BaseRouter = () => (
     <Route exact path="/" component={HomepageLayout} />
     <Route exact path="/prescriptions" component={PresciptionsList} />
     <Route exact path="/prescriptions/:id" component={PresciptionsDetail} />
+    <Route exact path="/writeprescription" component={WritePresciptionForm} />
 
   </Hoc>
 );

@@ -27,9 +27,16 @@ class CustomLayout extends React.Component {
                 <Menu.Item key="2" onClick={this.props.logout}>
                   Logout
               </Menu.Item>
-                <Menu.Item key="3">
-                  <Link to="/prescriptions">Prescriptions</Link>
-                </Menu.Item>
+                {this.props.token && this.props.is_patient ? (
+                  <Menu.Item key="3">
+                    <Link to="/prescriptions">Prescriptions</Link>
+                  </Menu.Item>) : null}
+
+                {this.props.token !== null && this.props.is_doctor ? (
+                  <Menu.Item key="3">
+                    <Link to="/writeprescription">Write Precription</Link>
+                  </Menu.Item>
+                ) : null}
               </Menu>
             ) : (
                 <Menu
@@ -58,18 +65,13 @@ class CustomLayout extends React.Component {
                 <Link to={`/profile/${this.props.userId}`}>Profile</Link>
               </Breadcrumb.Item>
             ) : null}
-            {this.props.token !== null && this.props.is_teacher ? (
-              <Breadcrumb.Item>
-                <Link to="/create">Create</Link>
-              </Breadcrumb.Item>
-            ) : null}
           </Breadcrumb>
           <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
             {this.props.children}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-         Ant UED
+          Ant UED
         </Footer>
       </Layout>
     );
@@ -80,7 +82,8 @@ const mapStateToProps = state => {
   return {
     userId: state.auth.userId,
     token: state.auth.token,
-    is_teacher: state.auth.is_teacher
+    is_doctor: state.auth.is_doctor,
+    is_patient: state.auth.is_patient
   };
 };
 

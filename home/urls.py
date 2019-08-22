@@ -9,6 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('prescriptions/', include('api.prescriptions.urls')),
-    path('signed-assignments/', include('api.signed_prescriptions.urls')),
+    path('products/', include('products.urls')),
     re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
 ]

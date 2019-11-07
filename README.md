@@ -16,8 +16,8 @@ $ npm install
 $ npm start
 # Make sure to update dependencies according to the requirements.txt
 $ npm run dev
-$ npm run build
 # Build a static folder and then test out the server with manage.py script
+$ npm run build
 $ python3 manage.py runserver
 
 # Visit http://localhost:3000
